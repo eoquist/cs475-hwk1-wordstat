@@ -6,6 +6,7 @@
  */
 #include <stdio.h>
 #include <string.h>
+#include <ctype.h>
 #include "defs.h"
 #include "stats.h"
 #include "menu.h"
@@ -43,8 +44,18 @@ int main(int argc, char *argv[])
 		case 2:
 			wordCount(str);
 			break;
-		case 3:
-			displayHistogram();
+		case 3: // ugly baby shit here
+			int len = strlen(str);
+			for(int i = 0; i < len; i++){ // 97->122
+				str[i] = tolower(str[i]);
+			}
+    		for (int i = 0; i < len; i++){
+				int letter = (int)str[i] - 97;
+				if(isalpha(letter)){
+					histogram[letter] = str[i];
+				}
+        	}
+			displayHistogram(histogram);
 			break;
 		case 4:
 			while ((str[0] != endCondition) && (strlen(str) == 1)){

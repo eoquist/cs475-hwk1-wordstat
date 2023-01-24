@@ -10,7 +10,7 @@
 
 // TODO: functions declarations go below
 void getFrequency(char str[]);
-void displayHistogram();
+void displayHistogram(int hist[]);
 void wordCount(char str[]);
 
 #endif /* STATS_H_ */
