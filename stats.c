@@ -14,8 +14,6 @@
 */
 void getFrequency(char str[]){
     // do counting and shit
-
-
     int numVowel;
     int numConsonant;
     int numTotal;
@@ -30,7 +28,15 @@ void getFrequency(char str[]){
  * @param str to tokenize by whitespace to count words
 */
 void wordCount(char str[]){
-    //
+    int numWords = 0;
+    char token = strtok(str," ");
+    while (token != NULL)
+    {
+    ++numWords;
+    token = strtok(NULL, " ");
+    }
+    
+    printf("Total word count: %d",numWords);
 }
 
 /**
