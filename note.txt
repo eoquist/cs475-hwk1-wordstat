@@ -1,0 +1,47 @@
+You are to create a program generates some basics statistics given user-input strings. 
+When your program begins, it should ask the user to enter a string. Once it is entered, 
+your program should parse all words out of this string, and update the following stats:
+
+    Vowel count
+    Consonant count
+    A histogram of letter-use frequency
+
+    Update these stats for each word that is read, and continue asking for more input until the user enters #, 
+    at which point your program outputs a menu with the following options:
+        Enter 1 to print vowel and consonant frequency.
+        Enter 2 to print word count.
+        Enter 3 to print histogram.
+        Enter 4 to return to inputting more strings.
+        Enter 5 to quit.
+
+Makefile - Do not make changes to this file. It is used for compiling.
+menu.h - This file should contain menu-option constants, function declarations
+menu.c - You will implement the functions declared in menu.h in this file
+stats.h - This file should contain constants, WordStats struct declaration, function declarations
+stats.c - You will implement the functions declared in stats.h in this file
+main.c - This file will contain the main() function, and other related helper functions
+
+
+
+Display any floating-point number to the hundredth place.
+
+The program starts by accepting user inputs (strings). Each string should be processed (update your running stats), 
+before accepting the next string. Continue accepting strings until a line beginning with the value # is read, 
+at which point, you should print the option menu.
+
+You may not assume that a user always enters a single word per line. If the user enters multiple words on the same line, 
+you should tokenize each one, and determine its length. You may assume that the entire line of user-input cannot exceed 
+128 characters. (I have defined a global constant MAX_INPUT_LEN to store this value in main.c.) Ignore any characters 
+that is input beyond this limit. You should be using the aforementioned fgets() function, given in C’s stdio.h library, 
+to obtain a line of input (with spaces) from the user.
+    To split a string into tokens, you should look into using the strtok() function given in the string.h library.
+
+Once the menu is shown, your program should now accept numerical options. If an unknown menu option is entered, 
+print an error informing the user and re-prompt. Note that there is an option to return to string-input mode.
+
+To simplify things, you may assume that words are delimited by any whitespace, and that words must begin with an 
+alphabetical character. Ignore any tokens that begin with a digit.
+
+Your program must contain several well-defined functions.
+
+The bars in the histogram that you print must be vertical (see below). Point deductions will be taken if you print horizontal bars.

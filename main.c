@@ -1,8 +1,8 @@
 /*
  * main.c
  *
- *  Created on: Jun 15, 2015
- *      Author: dchiu
+ *  Created on: Jan. 23, 2023
+ *      Author: Emilee Oquist
  */
 #include <stdio.h>
 #include <string.h>
@@ -17,13 +17,47 @@
  * @param argv Ignore
  * @return int
  */
-int main(int argc, char *argv[]) {
+int main(int argc, char *argv[])
+{
 	// declare and initialize the histogram
 	int histogram[ALPHABET_SIZE];
 
 	// TODO: start by getting strings from users until # is input
+	char endCondition = '#';
+	char str[MAX_INPUT_LEN];
+	int option = 0;
+	printf("Enter strings (%c to stop):\n", endCondition);
+
+	while ((str[0] != endCondition) && (strlen(str) == 1)){
+		fgets(str, MAX_INPUT_LEN, stdin);
+	}
 	// TODO: after # is input, print menu options
-	
-	printf("Exiting...\n");
-	return 0;
+	option = getMenuOption();
+
+	while (option > 0 && option < 5)
+	{
+		switch (option){
+		case 1:
+			getFrequency(str);
+			break;
+		case 2:
+			wordCount(str);
+			break;
+		case 3:
+			displayHistogram();
+			break;
+		case 4:
+			while ((str[0] != endCondition) && (strlen(str) == 1)){
+				fgets(str, MAX_INPUT_LEN, stdin);
+			}
+			// TODO: after # is input, print menu options
+			option = getMenuOption();
+			break;
+		}
+	}
+	if (option == 5)
+	{
+		printf("Exiting...\n");
+		return 0; // signifies a normal exit --> a non-zero value indicates an error
+	}
 }
