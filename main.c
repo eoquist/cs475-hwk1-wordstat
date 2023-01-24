@@ -22,6 +22,10 @@ int main(int argc, char *argv[])
 {
 	// declare and initialize the histogram
 	int histogram[ALPHABET_SIZE];
+	for (int i = 0; i < ALPHABET_SIZE; i++)
+	{
+		histogram[i] = 0;
+	}
 
 	// TODO: start by getting strings from users until # is input
 	char endCondition = '#';
@@ -29,41 +33,55 @@ int main(int argc, char *argv[])
 	int option = 0;
 	printf("Enter strings (%c to stop):\n", endCondition);
 
-	while ((str[0] != endCondition) && (strlen(str) == 1)){
+	while ((str[0] != endCondition) && (strlen(str) != 1))
+	{
 		fgets(str, MAX_INPUT_LEN, stdin);
 	}
 	// TODO: after # is input, print menu options
 	option = getMenuOption();
 
-	while (option > 0 && option < 5)
+	while (option != 5)
 	{
-		switch (option){
-		case 1:
+		if (option == 1) // vowel and consonant frequency
+		{
 			getFrequency(str);
-			break;
-		case 2:
+			option = getMenuOption();
+		}
+		else if (option == 2) // word count
+		{
 			wordCount(str);
-			break;
-		case 3: // ugly baby shit here
+			option = getMenuOption();
+		}
+		else if (option == 3) // histogram
+		{ // ugly baby shit here
 			int len = strlen(str);
-			for(int i = 0; i < len; i++){ // 97->122
+			for (int i = 0; i < len; i++)
+			{ // 97->122
 				str[i] = tolower(str[i]);
 			}
-    		for (int i = 0; i < len; i++){
+			for (int i = 0; i < len; i++)
+			{
 				int letter = (int)str[i] - 97;
-				if(isalpha(letter)){
+				if (isalpha(letter))
+				{
 					histogram[letter] = str[i];
 				}
-        	}
+			}
 			displayHistogram(histogram);
-			break;
-		case 4:
-			while ((str[0] != endCondition) && (strlen(str) == 1)){
+			option = getMenuOption();
+		}
+		else if (option == 4) // continue getting inputs
+		{
+			while ((str[0] != endCondition) && (strlen(str) == 1))
+			{
 				fgets(str, MAX_INPUT_LEN, stdin);
 			}
-			// TODO: after # is input, print menu options
 			option = getMenuOption();
-			break;
+		}
+		else
+		{
+			printf("The option %d is invalid.\n", option);
+			option = getMenuOption();
 		}
 	}
 	if (option == 5)

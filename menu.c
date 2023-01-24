@@ -10,7 +10,7 @@
 
 int getMenuOption() {
 	int opt;
-	printf("*** WORD STATS MENU ***\n");
+	printf("\n\n*** WORD STATS MENU ***\n");
 	printf("Enter %d to print vowel and consonant frequency.\n", MENU_STATS);
 	printf("Enter %d to print word count.\n", MENU_WORDS);
 	printf("Enter %d to print histogram.\n", MENU_HISTO);

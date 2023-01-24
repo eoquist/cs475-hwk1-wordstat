@@ -15,12 +15,18 @@
  */
 void getFrequency(char str[])
 {
-    // do counting and all that jazz
-    int numVowel = 0;
-    int numConsonant = 0;
-    int numTotal = 0;
+    // debugging
+    	for(int i = 0; i < strlen(str) - 1; i++){
+        	printf("elem %c, ", (char) str[i]);
+    	}
 
+    // do counting and all that jazz
+    int numVowel = 1;
+    int numConsonant = 1;
+    int numTotal = 1;
+    
     int len = strlen(str);
+
     char symbol;
     for (int i = 0; i < len; i++)
     {
@@ -64,4 +70,9 @@ void wordCount(char str[])
 void displayHistogram(int hist[])
 {
     printf("print histogram here :)\n");
+      for (int i = 0; i < ALPHABET_SIZE; i++){
+        printf("%c ", 97+i);
+      }
+            
+    // !!!!!!!!!!!!!!!!!!!!!!!!!! make sure it actually does something
 }
