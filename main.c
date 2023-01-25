@@ -77,6 +77,8 @@ int main(int argc, char *argv[])
 		}
 		else if (option == 4) // continue getting inputs
 		{
+			// Clearing the array
+    		tmp[0] = '\0';
 			while ((tmp[0] != endCondition) && (strlen(tmp) != 1))
 			{
 				fgets(tmp, MAX_INPUT_LEN, stdin);
@@ -85,9 +87,10 @@ int main(int argc, char *argv[])
 					strcat(str, tmp);
 				}
 				else{
-					printf("%c inputted. Program will now stop getting inputs.");
+					printf("%c inputted. Program will now stop getting inputs.", endCondition);
 				}
 			}
+			option = getMenuOption();
 		}
 		else
 		{
