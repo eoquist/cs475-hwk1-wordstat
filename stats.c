@@ -38,10 +38,10 @@ void getFrequency(char str[])
         }
     }
 
-    float vowelFreq = numVowel / numTotal;
-    float consonantFreq = numConsonant / numTotal;
+    printf("vowel Freq %2.2f \n", ((double)numVowel / (double)numTotal) * 100);
+    printf("consonant Freq %2.2f \n", ((double)numConsonant / (double)numTotal) * 100);
 
-    printf("Vowels = %d (%2.2f), Consonants = %d (%2.2f), Total = %d\n", numVowel, vowelFreq, numConsonant, consonantFreq, numTotal);
+    printf("Vowels = %d (%2.2f), Consonants = %d (%2.2f), Total = %d\n", numVowel, ((double)numVowel / (double)numTotal) * 100, numConsonant, ((double)numConsonant / (double)numTotal) * 100, numTotal);
 }
 
 /**
@@ -74,11 +74,11 @@ void displayHistogram(int hist[], int maxFreq)
         {
             if (hist[j] >= i)
             {
-                printf("* ");
+                printf("*\t");
             }
             else
             {
-                printf("  ");
+                printf(" \t");
             }
         }
         printf("\n");
@@ -87,12 +87,12 @@ void displayHistogram(int hist[], int maxFreq)
     // the horizontal printing tango
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {
-        printf("%c ", 97 + i);
+        printf("%c\t", 97 + i);
     }
     printf("\n"); // don't bully me too hard
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {
-        printf("%d ", hist[i]);
+        printf("%d\t", hist[i]);
     }
     printf("\n");
 }
