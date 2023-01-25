@@ -34,13 +34,11 @@ void getFrequency(char str[])
         symbol = str[i];
         if ((symbol == 'A') || (symbol == 'a') || (symbol == 'E') || (symbol == 'e') || (symbol == 'I') || (symbol == 'i') || (symbol == 'O') || (symbol == 'o') || (symbol == 'U') || (symbol == 'u'))
         {
-            printf("elem %c is vowel, ", symbol);
             numVowel++;
             numTotal++;
         }
         else if (isalpha(symbol) && symbol != ' ')
         {
-            printf("elem %c is consonant, ", symbol);
             numConsonant++;
             numTotal++;
         }

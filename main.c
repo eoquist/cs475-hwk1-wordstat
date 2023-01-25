@@ -28,79 +28,78 @@ int main(int argc, char *argv[])
 	}
 
 	char endCondition = '#';
+	int isComplete = 0;
 	char str[MAX_INPUT_LEN];
-	char tmp[MAX_INPUT_LEN];
+	char tmp[MAX_INPUT_LEN]; // was having issues only using str
 	int option = 0;
 
 	// TODO: start by getting strings from users until # is input
 	printf("Enter strings (%c to stop):\n", endCondition);
-	while ((tmp[0] != endCondition) && (strlen(tmp) != 1))
+	while (isComplete == 0)
 	{
-		fgets(tmp, MAX_INPUT_LEN, stdin);
-		if (tmp[0] != endCondition)
+		while ((tmp[0] != endCondition) && (strlen(tmp) != 2))
 		{
-			strcat(str, tmp);
+			fgets(tmp, MAX_INPUT_LEN, stdin);
+			if (tmp[0] != endCondition)
+			{
+				strcat(str, tmp);
+			}
 		}
-	}
 
-	// TODO: after # is input, print menu options
-	option = getMenuOption();
-	while (option != 5)
-	{
-		if (option == 1) // vowel and consonant frequency
+		// TODO: after # is input, print menu options
+		option = getMenuOption();
+		while (option != 5)
 		{
-			getFrequency(str);
-			option = getMenuOption();
-		}
-		else if (option == 2) // word count
-		{
-			wordCount(str);
-			option = getMenuOption();
-		}
-		else if (option == 3)
-		{ // histogram and ugly baby shit here
-			int len = strlen(str);
-			for (int i = 0; i < len; i++)
-			{							  // 97->122
-				str[i] = tolower(str[i]); // ??? does tolower terminate the string correctly?
-			}
-			for (int i = 0; i < len; i++)
+			if (option == 1) // vowel and consonant frequency
 			{
-				int letter = (int)str[i] - 97;
-				if (isalpha(letter))
+				getFrequency(str);
+				option = getMenuOption();
+			}
+			else if (option == 2) // word count
+			{
+				wordCount(str);
+				option = getMenuOption();
+			}
+			else if (option == 3) // histogram
+			{
+				int len = strlen(str);
+				for (int i = 0; i < len; i++)
 				{
-					histogram[letter] = str[i];
+					str[i] = tolower(str[i]);
 				}
-			}
-			displayHistogram(histogram);
-			option = getMenuOption();
-		}
-		else if (option == 4) // continue getting inputs
-		{
-			// Clearing the array
-    		tmp[0] = '\0';
-			while ((tmp[0] != endCondition) && (strlen(tmp) != 1))
-			{
-				fgets(tmp, MAX_INPUT_LEN, stdin);
-				if (tmp[0] != endCondition)
+				for (int i = 0; i < len; i++)
 				{
+					int letter = (int)str[i] - 97;
+					if (isalpha(letter))
+					{
+						histogram[letter] = str[i];
+					}
+				}
+				displayHistogram(histogram);
+				option = getMenuOption();
+			}
+			else if (option == 4) // continue getting inputs
+			{
+				tmp[0] = '\0';
+				printf("test tmp len %d", strlen(tmp)); // !!!
+				while ((tmp[0] != endCondition) && (strlen(tmp) != 2))
+				{
+					fgets(tmp, MAX_INPUT_LEN, stdin);
+					printf("option 4 chosen got input\n"); // !!!
 					strcat(str, tmp);
 				}
-				else{
-					printf("%c inputted. Program will now stop getting inputs.", endCondition);
-				}
+				option = getMenuOption();
 			}
-			option = getMenuOption();
+			else
+			{
+				printf("The option %d is invalid.\n", option);
+				option = getMenuOption();
+			}
 		}
-		else
+		if (option == 5)
 		{
-			printf("The option %d is invalid.\n", option);
-			option = getMenuOption();
+			printf("Exiting...\n");
+			return 0; // signifies a normal exit --> a non-zero value indicates an error
 		}
-	}
-	if (option == 5)
-	{
-		printf("Exiting...\n");
-		return 0; // signifies a normal exit --> a non-zero value indicates an error
 	}
 }
