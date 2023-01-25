@@ -37,11 +37,7 @@ void getFrequency(char str[])
             numTotal++;
         }
     }
-
-    printf("vowel Freq %2.2f \n", ((double)numVowel / (double)numTotal) * 100);
-    printf("consonant Freq %2.2f \n", ((double)numConsonant / (double)numTotal) * 100);
-
-    printf("Vowels = %d (%2.2f), Consonants = %d (%2.2f), Total = %d\n", numVowel, ((double)numVowel / (double)numTotal) * 100, numConsonant, ((double)numConsonant / (double)numTotal) * 100, numTotal);
+    printf("Vowels = %d (%2.2f%c), Consonants = %d (%2.2f%c), Total = %d\n", numVowel, ((double)numVowel / (double)numTotal) * 100, 37, numConsonant, ((double)numConsonant / (double)numTotal) * 100, 37, numTotal);
 }
 
 /**
@@ -62,7 +58,8 @@ void wordCount(char str[])
 }
 
 /**
- * Prints a histogram of the letter frequencies.
+ * Prints a histogram of the letter frequencies. Looks stretched because of tabs. W/o tabs it gets misaligned
+ * when there's more input.
  */
 void displayHistogram(int hist[], int maxFreq)
 {
