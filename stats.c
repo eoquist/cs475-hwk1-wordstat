@@ -15,12 +15,6 @@
  */
 void getFrequency(char str[])
 {
-    // debugging
-    // for (int i = 1; i < strlen(str) - 1; i++)
-    // {
-    //     printf("elem %c, ", (char)str[i]);
-    // }
-
     // do counting and all that jazz
     int numVowel = 0;
     int numConsonant = 0;
@@ -73,9 +67,21 @@ void wordCount(char str[])
 void displayHistogram(int hist[], int maxFreq)
 {
     // vertical printing *****
-    for (int i = 0; i < maxFreq; i++)
+    int count = maxFreq;
+    for (int i = count; i > 0; i--) // print * as necessary and ' ' when not >=
     {
-        // print **** as necessary and ' ' when not >=
+        for (int j = 0; j < ALPHABET_SIZE; j++)
+        {
+            if (hist[j] >= i)
+            {
+                printf("* ");
+            }
+            else
+            {
+                printf("  ");
+            }
+        }
+        printf("\n");
     }
 
     // the horizontal printing tango

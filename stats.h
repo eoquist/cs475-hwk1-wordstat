@@ -8,8 +8,6 @@
 // constants
 #define ALPHABET_SIZE 26
 
-//
-
 // TODO: functions declarations go below
 void getFrequency(char str[]);
 void displayHistogram(int hist[], int maxFreq);
