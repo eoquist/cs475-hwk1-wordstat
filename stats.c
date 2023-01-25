@@ -70,9 +70,13 @@ void wordCount(char str[])
 /**
  * Prints a histogram of the letter frequencies.
  */
-void displayHistogram(int hist[])
+void displayHistogram(int hist[], int maxFreq)
 {
     // vertical printing *****
+    for (int i = 0; i < maxFreq; i++)
+    {
+        // print **** as necessary and ' ' when not >=
+    }
 
     // the horizontal printing tango
     for (int i = 0; i < ALPHABET_SIZE; i++)

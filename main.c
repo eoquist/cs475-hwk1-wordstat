@@ -22,6 +22,7 @@ int main(int argc, char *argv[])
 {
 	// declare and initialize the histogram
 	int histogram[ALPHABET_SIZE];
+	int histMax = 0;
 	for (int i = 0; i < ALPHABET_SIZE; i++)
 	{
 		histogram[i] = 0;
@@ -68,11 +69,16 @@ int main(int argc, char *argv[])
 					str[i] = tolower(str[i]);
 					if (isalpha(str[i]) && str[i] != ' ')
 					{
-						histogram[(int)str[i] - 97] += 1;
+						int letter = (int)str[i] - 97;
+						histogram[letter] += 1;
+						if (histogram[letter] > histMax)
+						{
+							histMax = histogram[letter];
+						}
 					}
 				}
 
-				displayHistogram(histogram);
+				displayHistogram(histogram, histMax);
 				option = getMenuOption();
 			}
 			else if (option == 4) // continue getting inputs
