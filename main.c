@@ -66,26 +66,22 @@ int main(int argc, char *argv[])
 				for (int i = 0; i < len; i++)
 				{
 					str[i] = tolower(str[i]);
-				}
-				for (int i = 0; i < len; i++)
-				{
-					int letter = (int)str[i] - 97;
-					if (isalpha(letter))
+					if (isalpha(str[i]) && str[i] != ' ')
 					{
-						histogram[letter] = str[i];
+						histogram[(int)str[i] - 97] += 1;
 					}
 				}
+
 				displayHistogram(histogram);
 				option = getMenuOption();
 			}
 			else if (option == 4) // continue getting inputs
 			{
 				tmp[0] = '\0';
-				printf("test tmp len %d", strlen(tmp)); // !!!
+				printf("Enter strings (%c to stop):\n", endCondition);
 				while ((tmp[0] != endCondition) && (strlen(tmp) != 2))
 				{
-					fgets(tmp, MAX_INPUT_LEN, stdin);
-					printf("option 4 chosen got input\n"); // !!!
+					fgets(tmp, MAX_INPUT_LEN, stdin); // needs to flush a \n !!!
 					strcat(str, tmp);
 				}
 				option = getMenuOption();

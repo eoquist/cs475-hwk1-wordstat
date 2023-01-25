@@ -72,11 +72,17 @@ void wordCount(char str[])
  */
 void displayHistogram(int hist[])
 {
-    printf("print histogram here :)\n");
+    // vertical printing *****
+
+    // the horizontal printing tango
     for (int i = 0; i < ALPHABET_SIZE; i++)
     {
         printf("%c ", 97 + i);
     }
-
-    // !!!!!!!!!!!!!!!!!!!!!!!!!! make sure it actually does something
+    printf("\n"); // don't bully me too hard
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+    {
+        printf("%d ", hist[i]);
+    }
+    printf("\n");
 }
