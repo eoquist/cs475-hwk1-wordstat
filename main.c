@@ -27,19 +27,24 @@ int main(int argc, char *argv[])
 		histogram[i] = 0;
 	}
 
-	// TODO: start by getting strings from users until # is input
 	char endCondition = '#';
 	char str[MAX_INPUT_LEN];
+	char tmp[MAX_INPUT_LEN];
 	int option = 0;
-	printf("Enter strings (%c to stop):\n", endCondition);
 
-	while ((str[0] != endCondition) && (strlen(str) != 1))
+	// TODO: start by getting strings from users until # is input
+	printf("Enter strings (%c to stop):\n", endCondition);
+	while ((tmp[0] != endCondition) && (strlen(tmp) != 1))
 	{
-		fgets(str, MAX_INPUT_LEN, stdin);
+		fgets(tmp, MAX_INPUT_LEN, stdin);
+		if (tmp[0] != endCondition)
+		{
+			strcat(str, tmp);
+		}
 	}
+
 	// TODO: after # is input, print menu options
 	option = getMenuOption();
-
 	while (option != 5)
 	{
 		if (option == 1) // vowel and consonant frequency
@@ -52,12 +57,12 @@ int main(int argc, char *argv[])
 			wordCount(str);
 			option = getMenuOption();
 		}
-		else if (option == 3) // histogram
-		{ // ugly baby shit here
+		else if (option == 3)
+		{ // histogram and ugly baby shit here
 			int len = strlen(str);
 			for (int i = 0; i < len; i++)
-			{ // 97->122
-				str[i] = tolower(str[i]);
+			{							  // 97->122
+				str[i] = tolower(str[i]); // ??? does tolower terminate the string correctly?
 			}
 			for (int i = 0; i < len; i++)
 			{
@@ -72,11 +77,17 @@ int main(int argc, char *argv[])
 		}
 		else if (option == 4) // continue getting inputs
 		{
-			while ((str[0] != endCondition) && (strlen(str) == 1))
+			while ((tmp[0] != endCondition) && (strlen(tmp) != 1))
 			{
-				fgets(str, MAX_INPUT_LEN, stdin);
+				fgets(tmp, MAX_INPUT_LEN, stdin);
+				if (tmp[0] != endCondition)
+				{
+					strcat(str, tmp);
+				}
+				else{
+					printf("%c inputted. Program will now stop getting inputs.");
+				}
 			}
-			option = getMenuOption();
 		}
 		else
 		{

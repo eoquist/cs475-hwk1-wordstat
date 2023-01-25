@@ -1,0 +1,2 @@
+1) Will keep repeating menu options if user inputs an invalid option number
+2) inputting more strings has some issues

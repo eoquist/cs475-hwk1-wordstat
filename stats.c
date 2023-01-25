@@ -16,26 +16,31 @@
 void getFrequency(char str[])
 {
     // debugging
-    	for(int i = 0; i < strlen(str) - 1; i++){
-        	printf("elem %c, ", (char) str[i]);
-    	}
+    // for (int i = 1; i < strlen(str) - 1; i++)
+    // {
+    //     printf("elem %c, ", (char)str[i]);
+    // }
 
     // do counting and all that jazz
-    int numVowel = 1;
-    int numConsonant = 1;
-    int numTotal = 1;
-    
+    int numVowel = 0;
+    int numConsonant = 0;
+    int numTotal = 0;
+
     int len = strlen(str);
 
     char symbol;
-    for (int i = 0; i < len; i++)
+    for (int i = 1; i < len - 1; i++)
     {
         symbol = str[i];
-        if((symbol == 'A') || (symbol == 'a') || (symbol == 'E') || (symbol == 'e') || (symbol == 'I') || (symbol == 'i') || (symbol == 'O') || (symbol == 'o') || (symbol == 'U') || (symbol == 'u')){
+        if ((symbol == 'A') || (symbol == 'a') || (symbol == 'E') || (symbol == 'e') || (symbol == 'I') || (symbol == 'i') || (symbol == 'O') || (symbol == 'o') || (symbol == 'U') || (symbol == 'u'))
+        {
+            printf("elem %c is vowel, ", symbol);
             numVowel++;
             numTotal++;
         }
-        else if(isalpha(symbol)){
+        else if (isalpha(symbol) && symbol != ' ')
+        {
+            printf("elem %c is consonant, ", symbol);
             numConsonant++;
             numTotal++;
         }
@@ -70,9 +75,10 @@ void wordCount(char str[])
 void displayHistogram(int hist[])
 {
     printf("print histogram here :)\n");
-      for (int i = 0; i < ALPHABET_SIZE; i++){
-        printf("%c ", 97+i);
-      }
-            
+    for (int i = 0; i < ALPHABET_SIZE; i++)
+    {
+        printf("%c ", 97 + i);
+    }
+
     // !!!!!!!!!!!!!!!!!!!!!!!!!! make sure it actually does something
 }
