@@ -33,7 +33,7 @@ void getFrequency(char str[])
         }
         else if (isalpha(symbol) && symbol != ' ')
         {
-            numConsonant++;
+             numConsonant++;
             numTotal++;
         }
     }
